@@ -1,0 +1,9 @@
+[project]
+name = "default"
+version = "0.1.0"
+description = "Proyecto de estimación de incurrir en mora"
+readme = "README.md"
+requires-python = "==3.12.12"
+dependencies = [
+    "skrub>=0.7.1",
+]

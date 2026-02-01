@@ -1,0 +1,7 @@
+[project]
+name = "calificacion-cartera"
+version = "0.1.0"
+description = "Proyecto de calificación de riesgo de cartera"
+readme = "README.md"
+requires-python = "==3.12.12"
+dependencies = []
