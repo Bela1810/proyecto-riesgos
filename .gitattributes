@@ -2,5 +2,9 @@ data/data-09-2025/*.csv filter=lfs diff=lfs merge=lfs -text
 data/data-09-2025/*.xlsx filter=lfs diff=lfs merge=lfs -text
 data/data-09-2025/*.parquet filter=lfs diff=lfs merge=lfs -text
 data/data-09-2025/informes-cartera/*.xlsx filter=lfs diff=lfs merge=lfs -text
+data/data-06-2022/*.xlsx filter=lfs diff=lfs merge=lfs -text
+data/data-06-2022/*.csv filter=lfs diff=lfs merge=lfs -text
+data/data-06-2022/CARTERA/*.csv filter=lfs diff=lfs merge=lfs -text
+data/data-06-2022/CARTERA/*.xlsx filter=lfs diff=lfs merge=lfs -text
 *.csv filter=lfs diff=lfs merge=lfs -text
 *.xlsx filter=lfs diff=lfs merge=lfs -text
