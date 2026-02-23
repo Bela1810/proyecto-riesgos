@@ -24,3 +24,17 @@ members = [
     "calificacion-cartera",
     "default",
 ]
+
+[tool.ruff]
+line-length = 88
+# "E" (Errores de estilo), "F" (Errores de Pyflakes), "I" (Orden de imports)
+select = ["E", "F", "I"]
+# Ignorar advertencias comunes en notebooks como variables no usadas en celdas de prueba
+ignore = ["F841"] 
+
+[tool.ruff.lint]
+# Esto le dice a Ruff que limpie las importaciones no usadas automáticamente
+fixable = ["F401", "I001"]
+
+[tool.ruff.lint.isort]
+known-third-party = ["pandas", "numpy", "sklearn", "matplotlib"]
