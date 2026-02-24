@@ -1,0 +1,13 @@
+{
+    "clf__colsample_bytree": 0.5041048801549949,
+    "clf__gamma": 0.848180954683738,
+    "clf__learning_rate": 0.019497829212420246,
+    "clf__max_delta_step": 6,
+    "clf__max_depth": 7,
+    "clf__min_child_weight": 7,
+    "clf__n_estimators": 438,
+    "clf__reg_alpha": 0.4891966206485603,
+    "clf__reg_lambda": 0.036274299407536716,
+    "clf__scale_pos_weight": 2.3002916390278605,
+    "clf__subsample": 0.9799191391343041
+}

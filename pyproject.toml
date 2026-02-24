@@ -5,6 +5,7 @@ description = "Repositorio de proyectos de riesgos"
 readme = "README.md"
 requires-python = "==3.12.12"
 dependencies = [
+    "imblearn>=0.0",
     "ipykernel>=7.1.0",
     "jupyter>=1.1.1",
     "lightgbm>=4.6.0",
@@ -14,6 +15,8 @@ dependencies = [
     "scikit-learn==1.7.2",
     "seaborn>=0.13.2",
     "shap>=0.50.0",
+    "skrub>=0.7.1",
+    "xgboost>=3.2.0",
 ]
 
 [tool.uv]

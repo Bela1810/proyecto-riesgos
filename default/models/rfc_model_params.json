@@ -1,0 +1,9 @@
+{
+    "classifier__bootstrap": true,
+    "classifier__criterion": "log_loss",
+    "classifier__max_depth": 10,
+    "classifier__max_features": null,
+    "classifier__min_samples_leaf": 6,
+    "classifier__min_samples_split": 17,
+    "classifier__n_estimators": 107
+}
