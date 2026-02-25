@@ -11,7 +11,9 @@ dependencies = [
     "lightgbm>=4.6.0",
     "openpyxl>=3.1.5",
     "pandas==2.3",
+    "pre-commit>=4.5.1",
     "pyarrow>=23.0.1",
+    "ruff>=0.15.2",
     "scikit-learn==1.7.2",
     "seaborn>=0.13.2",
     "shap>=0.50.0",
@@ -33,7 +35,7 @@ line-length = 88
 # "E" (Errores de estilo), "F" (Errores de Pyflakes), "I" (Orden de imports)
 select = ["E", "F", "I"]
 # Ignorar advertencias comunes en notebooks como variables no usadas en celdas de prueba
-ignore = ["F841"] 
+ignore = ["F841"]
 
 [tool.ruff.lint]
 # Esto le dice a Ruff que limpie las importaciones no usadas automáticamente

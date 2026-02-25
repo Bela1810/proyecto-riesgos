@@ -29,7 +29,7 @@ Configure el entorno con uv (Recomendado)
 # Instalar uv si no lo tiene
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 
-# Sincronizar el entorno con el archivo pyproject.toml 
+# Sincronizar el entorno con el archivo pyproject.toml
 uv sync
 ```
 

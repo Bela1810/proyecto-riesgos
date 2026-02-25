@@ -11,3 +11,6 @@ wheels/
 .uv/
 .ipynb_checkpoints/
 *.log
+
+# VS Code
+.vscode/
