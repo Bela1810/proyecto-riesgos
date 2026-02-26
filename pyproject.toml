@@ -10,6 +10,8 @@ dependencies = [
     "jupyter>=1.1.1",
     "lightgbm>=4.6.0",
     "openpyxl>=3.1.5",
+    "optuna>=4.7.0",
+    "optuna-integration>=4.7.0",
     "pandas==2.3",
     "pre-commit>=4.5.1",
     "pyarrow>=23.0.1",
