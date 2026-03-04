@@ -1,6 +1,6 @@
 {
-    //"python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
-    "python.defaultInterpreterPath": "uv",
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+    //"python.defaultInterpreterPath": "uv",
     "jupyter.notebookEditor.defaultKernel": "${workspaceFolder}/.venv/Scripts/python.exe",
     "python.terminal.activateEnvInSelectedTerminal": true,
     "editor.formatOnSave": true,
