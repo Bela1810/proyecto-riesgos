@@ -1,0 +1,1 @@
+{"iterations": 455, "learning_rate": 0.018645489058133596, "depth": 5, "l2_leaf_reg": 0.001447935763398298, "border_count": 132, "verbose": 0, "auto_class_weights": "Balanced", "random_strength": 6.563638771657359, "subsample": 0.9447293347077059, "colsample_bylevel": 0.8603154736614838, "min_child_samples": 44}
