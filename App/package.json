@@ -1,0 +1,37 @@
+{
+  "name": "app-de-gestion-de-riesgos",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "electron": "electron .",
+  "main": "electron.cjs",
+  "build": {
+    "appId": "com.riesgos.app",
+    "productName": "App de gestion de riesgos",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "forceCodeSigning": false
+    }
+  },
+  "scripts": {
+    "dev": "bun --hot src/index.tsx",
+    "build": "bun build ./src/index.html --outdir=dist --sourcemap --target=browser --minify --define:process.env.NODE_ENV='\"production\"' --env='BUN_PUBLIC_*'",
+    "start": "NODE_ENV=production bun src/index.tsx",
+    "electron": "electron electron.cjs",
+    "dist": "electron-builder"
+  },
+  "dependencies": {
+    "react": "^19",
+    "react-dom": "^19"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "electron": "^40.8.0",
+    "electron-is-dev": "^3.0.1",
+    "electron-builder": "^26.8.1"
+  }
+}
