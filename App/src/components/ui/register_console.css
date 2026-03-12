@@ -1,0 +1,97 @@
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e2e4e8;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-right: 70px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-bottom: 1px solid #e2e4e8;
+}
+
+.card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+}
+
+.card-icon--red {
+  background: rgba(224, 27, 36, 0.12);
+  color: #e01b24;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 700;
+  flex: 1;
+}
+
+.log-card-console {
+  background: #0d1117;
+  padding: 14px 16px;
+  overflow-y: auto;
+  font-family: 'IBM Plex Mono', 'Cascadia Code', 'Fira Code', monospace;
+  font-size: 12.5px;
+  min-height: 260px;
+  max-height: 340px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.log-card-empty {
+  color: #4b5563;
+  font-style: italic;
+  font-size: 12px;
+}
+
+.log-entry {
+  word-break: break-all;
+  line-height: 1.7;
+}
+
+.log-entry-time {
+  color: #4b5563;
+}
+
+.log-entry-level {
+  font-weight: 600;
+}
+
+.log-entry-msg {
+  color: #e2e8f0;
+}
+
+
+.btn-limpiar {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: 1px solid #e2e4e8;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #6b7280;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.btn-limpiar:hover {
+  background: rgba(224, 27, 36, 0.12);
+  color: #e01b24;
+  border-color: #e01b24;
+}

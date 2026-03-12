@@ -1,17 +1,21 @@
 .header {
   display: flex;
+  gap: 24px;
   align-items: center;
-  padding: 10px;
+  padding: 14px 32px;
+  background: #fff;
+  border-Bottom :1px solid #e2e4e8
+
 }
 
+.header_brand {
+    padding: 24px;
+    border-Right: 2px solid #e2e4e8;
+
+}
 
 .header__logo img {
-  height: 65px;
-}
-
-.header__title {
-  font-size: 20px;
-  font-weight: bold;
+  height: 50px;
 }
 
 .header__module {
@@ -20,32 +24,32 @@
 
 .header__module h1 {
   text-decoration: none;
-  font-size: 26px;
+  font-size: 19px;
   font-family: "Comme", sans-serif;
   font-weight: bold;
-  color: #333;
+  letter-Spacing: 0.3px;
 }
 
 .header__module p {
-  margin-right: 20px;
+  margin-right: 12px;
   font-family: "Comme", sans-serif;
   text-decoration: none;
+  color: #6b7280;
   font-weight: bold;
-  color: #777777;
-  margin-top: 0;
+  margin-top: 1;
 }
 
 hr {
   border: none;
   height: 1px;
-  background-color: #777777;
-  margin: 0;
+  background-color: #c7c6c6;
+  margin: auto;
 }
 
 .header__icons {
   display: flex;
   align-items: center;
   margin-left: auto;
-  font-size: 35px;
+  font-size: 30px;
   padding: 0 50px;
 }

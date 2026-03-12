@@ -14,8 +14,8 @@ export default function Header() {
         </div>
 
         <div className="header__module">
-          <h1>ESTIMADOR DE PERDIDA ESPERADA</h1>
-          <p>Modulo de Riesgo Crediticio</p>
+          <h1>ESTIMADOR DE PÉRDIDA ESPERADA</h1>
+          <p>Módulo de Riesgo Crediticio</p>
         </div>
 
         <div className="header__icons">
@@ -26,4 +26,5 @@ export default function Header() {
       <hr />
     </>
   );
+
 }
