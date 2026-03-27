@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import "./register_console.css";
+import FileQueue from './file_queue';
 
 export interface LogEntryData {
   time: string;
@@ -65,6 +66,10 @@ export default function RegisterConsole({ logs, onClear}: RegisterProps) {
         )}
         <div ref={bottomRef} />
       </div>
+      <FileQueue />
     </section>
+  
+    
+    
   );
 }

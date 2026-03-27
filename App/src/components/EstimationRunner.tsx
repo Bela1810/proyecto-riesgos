@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./EstimationRunner.css";
 
-// Acceder a ipcRenderer de forma segura en el entorno de Electron
+
 const ipcRenderer = (window as any).require
   ? (window as any).require("electron").ipcRenderer
   : null;
