@@ -1,6 +1,39 @@
 const { app, BrowserWindow, ipcMain, dialog } = require("electron");
 const path = require("path");
 const isDev = require("electron-is-dev");
+const { spawn } = require("child_process");
+
+let pythonProcess = null;
+
+function createPythonProcess() {
+  const script = path.join(
+    __dirname,
+    "..",
+    "calificacion-cartera",
+    "src",
+    "api.py",
+  );
+  const pythonExecutable = path.join(
+    __dirname,
+    "..",
+    ".venv",
+    "Scripts",
+    "python.exe",
+  );
+  pythonProcess = spawn(pythonExecutable, [script]);
+
+  pythonProcess.stdout.on("data", (data) => {
+    console.log(`Python stdout: ${data}`);
+  });
+
+  pythonProcess.stderr.on("data", (data) => {
+    console.error(`Python stderr: ${data}`);
+  });
+
+  pythonProcess.on("close", (code) => {
+    console.log(`Python process exited with code ${code}`);
+  });
+}
 
 let mainWindow;
 
@@ -10,6 +43,7 @@ function createWindow() {
     height: 600,
     webPreferences: {
       nodeIntegration: true,
+      contextIsolation: false,
     },
   });
 
@@ -22,10 +56,16 @@ function createWindow() {
   mainWindow.on("closed", () => (mainWindow = null));
 }
 
-app.on("ready", createWindow);
+app.on("ready", () => {
+  createPythonProcess();
+  createWindow();
+});
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
+    if (pythonProcess) {
+      pythonProcess.kill();
+    }
     app.quit();
   }
 });
@@ -38,11 +78,10 @@ app.on("activate", () => {
 
 ipcMain.handle("select-folder", async () => {
   const result = await dialog.showOpenDialog({
-    properties: ["openDirectory"]
+    properties: ["openDirectory"],
   });
 
   if (result.canceled) return null;
 
   return result.filePaths[0];
 });
-

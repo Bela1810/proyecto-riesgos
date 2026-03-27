@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import "./form.css";
 import { ImFolderDownload } from "react-icons/im";
 import { FaPlay, FaFolder, FaFolderPlus } from "react-icons/fa";
 
-export default function Form() {
+interface FormProps {
+  inputPath: string;
+  setInputPath: (path: string) => void;
+  outputPath: string;
+  setOutputPath: (path: string) => void;
+  onExecute: () => void;
+  isLoading?: boolean;
+}
 
-  const [inputPath, setInputPath] = useState("");
-  const [outputPath, setOutputPath] = useState("");
+export default function Form({ inputPath, setInputPath, outputPath, setOutputPath, onExecute, isLoading }: FormProps) {
 
   const ipcRenderer =
     (window as any)?.require?.("electron")?.ipcRenderer;
@@ -80,9 +86,14 @@ export default function Form() {
         </div>
 
         <div className="card-footer">
-          <button className="btn-execute">
+          <button 
+             className="btn-execute" 
+             onClick={onExecute} 
+             disabled={isLoading}
+             style={{ opacity: isLoading ? 0.7 : 1, cursor: isLoading ? 'not-allowed' : 'pointer' }}
+          >
             <FaPlay />
-            EJECUTAR ESTIMACIÓN
+            {isLoading ? "PROCESANDO..." : "EJECUTAR ESTIMACIÓN"}
           </button>
 
           <p className="config-card__note">

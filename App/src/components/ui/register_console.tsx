@@ -9,6 +9,7 @@ export interface LogEntryData {
 
 interface RegisterProps {
   logs: LogEntryData[];
+  onClear?: () => void;
 }
 
 const LOG_COLORS: Record<string, string> = {
@@ -20,7 +21,7 @@ const LOG_COLORS: Record<string, string> = {
   WAITING: '#6b7280',
 };
 
-export default function RegisterConsole({ logs}: RegisterProps) {
+export default function RegisterConsole({ logs, onClear}: RegisterProps) {
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ export default function RegisterConsole({ logs}: RegisterProps) {
           </svg>
         </span>
         <h2 className="card-title">Registro del Procedimiento</h2>
-        <button className="btn-limpiar">
+        <button className="btn-limpiar" onClick={onClear}>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <polyline points="3 6 5 6 21 6" />
             <path d="M19 6l-1 14H6L5 6" />
