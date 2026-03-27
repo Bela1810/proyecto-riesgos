@@ -21,6 +21,7 @@ from tkinter import filedialog
 
 # Inicializar variables en session_state si no existen
 default_paths = {
+    
     "carpeta_base": r"C:\Users\jhquiza\OneDrive - Universidad de Medellin\2025-2\Proyecto riesgos\Archivos septiembre 2025",
     "carpeta_salida": r"C:\Users\jhquiza\OneDrive - Universidad de Medellin\2025-2\Proyecto riesgos\Archivos septiembre 2025",
 }

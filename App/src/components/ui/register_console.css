@@ -1,9 +1,10 @@
-
 .card {
   background: #ffffff;
   border: 1px solid #e2e4e8;
   border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.08),
+    0 4px 16px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -43,7 +44,7 @@
   background: #0d1117;
   padding: 14px 16px;
   overflow-y: auto;
-  font-family: 'IBM Plex Mono', 'Cascadia Code', 'Fira Code', monospace;
+  font-family: "IBM Plex Mono", "Cascadia Code", "Fira Code", monospace;
   font-size: 12.5px;
   min-height: 260px;
   max-height: 340px;
@@ -74,7 +75,6 @@
   color: #e2e8f0;
 }
 
-
 .btn-limpiar {
   display: inline-flex;
   align-items: center;
@@ -88,7 +88,10 @@
   background: #ffffff;
   color: #6b7280;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    border-color 0.15s;
 }
 
 .btn-limpiar:hover {
