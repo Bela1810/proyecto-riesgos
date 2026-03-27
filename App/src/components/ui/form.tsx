@@ -86,9 +86,9 @@ export default function Form({ inputPath, setInputPath, outputPath, setOutputPat
         </div>
 
         <div className="card-footer">
-          <button 
-             className="btn-execute" 
-             onClick={onExecute} 
+          <button
+             className="btn-execute"
+             onClick={onExecute}
              disabled={isLoading}
              style={{ opacity: isLoading ? 0.7 : 1, cursor: isLoading ? 'not-allowed' : 'pointer' }}
           >

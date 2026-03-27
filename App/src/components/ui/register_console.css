@@ -8,6 +8,7 @@
   flex-direction: column;
   overflow: hidden;
   margin-right: 70px;
+  align-self: flex-start;
 }
 
 .card-header {
