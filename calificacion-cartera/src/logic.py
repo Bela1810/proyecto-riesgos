@@ -1,6 +1,6 @@
 import os
 from datetime import datetime
-
+import sys
 import joblib
 import numpy as np
 import pandas as pd
@@ -9,6 +9,12 @@ meses_es = {
     "ENERO": 1, "FEBRERO": 2, "MARZO": 3, "ABRIL": 4, "MAYO": 5, "JUNIO": 6,
     "JULIO": 7, "AGOSTO": 8, "SEPTIEMBRE": 9, "OCTUBRE": 10, "NOVIEMBRE": 11, "DICIEMBRE": 12,
 }
+
+def get_models_root(project_root):
+    if hasattr(sys, '_MEIPASS'):
+        return sys._MEIPASS  # extracted temp folder at runtime
+    return project_root      # normal dev path
+
 
 def mes_ano_to_date(mes_ano, log_func):
     try:
@@ -67,8 +73,9 @@ def run_estimation_process(carpeta_base, carpeta_salida, log_func):
         archivos_credito_paths = find_files(carpeta_base, "CREDITO", ".xlsx")
         archivo_asociados_path = find_file(carpeta_base, "ASOCIADOS", ".xlsx")
 
-        modelo_con_path = find_file(project_root, "con_libranza", ".joblib")
-        modelo_sin_path = find_file(project_root, "sin_libranza", ".joblib")
+        models_root = get_models_root(project_root)
+        modelo_con_path = find_file(models_root, "con_libranza", ".joblib")
+        modelo_sin_path = find_file(models_root, "sin_libranza", ".joblib")
 
         log_func(f"Crédito: {len(archivos_credito_paths)}", "info")
         log_func(f"Asociados: {archivo_asociados_path}", "info")

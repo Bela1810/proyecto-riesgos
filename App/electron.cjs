@@ -1,18 +1,16 @@
 const { app, BrowserWindow, ipcMain, dialog } = require("electron");
 const path = require("path");
-const isDev = require("electron-is-dev");
+// const isDev = require("electron-is-dev");
 const { spawn } = require("child_process");
+const fs = require("fs");
 
 let pythonProcess = null;
+isDev = !app.isPackaged;
 
 function createPythonProcess() {
-  const script = path.join(
-    __dirname,
-    "..",
-    "calificacion-cartera",
-    "src",
-    "api.py",
-  );
+  const script = isDev
+    ? path.join(__dirname, "..", "calificacion-cartera", "src", "api.py")
+    : path.join(process.resourcesPath, "api.exe");
   const pythonExecutable = path.join(
     __dirname,
     "..",
@@ -20,8 +18,40 @@ function createPythonProcess() {
     "Scripts",
     "python.exe",
   );
-  pythonProcess = spawn(pythonExecutable, [script]);
+  console.log("Launching:", script);
 
+  const exePath = path.join(process.resourcesPath, "api.exe");
+  fs.writeFileSync(
+    path.join(app.getPath("userData"), "debug.log"),
+    `resourcesPath: ${process.resourcesPath}\nexe exists: ${fs.existsSync(exePath)}\npath: ${exePath}`,
+  );
+
+  pythonProcess = isDev
+    ? spawn(pythonExecutable, [script])
+    : spawn(script, [], { shell: true });
+  //
+  // pythonProcess.on("error", (err) => {
+  //   fs.appendFileSync(
+  //     path.join(app.getPath("userData"), "debug.log"),
+  //     `\nSpawn error: ${err.message}`,
+  //   );
+  // });
+
+  // pythonProcess.stderr.on("data", (data) => {
+  //   fs.appendFileSync(
+  //     path.join(app.getPath("userData"), "debug.log"),
+  //     `\nStderr: ${data.toString()}`,
+  //   );
+  // });
+
+  // pythonProcess.stdout.on("data", (data) => {
+  //   fs.appendFileSync(
+  //     path.join(app.getPath("userData"), "debug.log"),
+  //     `\nStdout: ${data.toString()}`,
+  //   );
+  // });
+
+  //
   pythonProcess.stdout.on("data", (data) => {
     console.log(`Python stdout: ${data}`);
   });
@@ -49,7 +79,7 @@ function createWindow() {
 
   const startURL = isDev
     ? "http://localhost:3000"
-    : `file://${path.join(__dirname, "../build/index.html")}`;
+    : `file://${path.join(__dirname, "./build/index.html")}`;
 
   mainWindow.loadURL(startURL);
 

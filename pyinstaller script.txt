@@ -1,0 +1,23 @@
+pyinstaller --onefile `
+  --collect-all flask `
+  --collect-all flask_cors `
+  --collect-all joblib `
+  --collect-all numpy `
+  --collect-all pandas `
+  --collect-all python-calamine `
+  --collect-all sklearn `
+  --collect-all openpyxl `
+  --hidden-import flask `
+  --hidden-import flask_cors `
+  --hidden-import joblib `
+  --hidden-import numpy `
+  --hidden-import pandas `
+  --hidden-import python-calamine `
+  --hidden-import sklearn `
+  --hidden-import openpyxl `
+  --add-data ".\calificacion-cartera\src\logic.py;." `
+  --add-data ".\calificacion-cartera\models\decision_tree_con_libranza.joblib;." `
+  --add-data ".\calificacion-cartera\models\decision_tree_sin_libranza.joblib;." `
+  --add-data ".\calificacion-cartera\models\lightgbm_con_libranza.joblib;." `
+  --add-data ".\calificacion-cartera\models\lightgbm_sin_libranza.joblib;." `
+  .\calificacion-cartera\src\api.py

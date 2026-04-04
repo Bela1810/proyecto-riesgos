@@ -8,23 +8,36 @@
   "build": {
     "appId": "com.riesgos.app",
     "productName": "App de gestion de riesgos",
+    "files": [
+      "build/**/*",
+      "electron.cjs",
+      "package.json"
+    ],
     "directories": {
       "output": "dist"
     },
     "win": {
       "forceCodeSigning": false
-    }
+    },
+    "extraResources": [
+      {
+        "from": "resources/api.exe",
+        "to": "."
+      }
+    ]
   },
   "scripts": {
     "dev": "bun --hot src/index.tsx",
-    "build": "bun build ./src/index.html --outdir=dist --sourcemap --target=browser --minify --define:process.env.NODE_ENV='\"production\"' --env='BUN_PUBLIC_*'",
+    "build": "bun build ./src/index.html --outdir=build --sourcemap --target=browser --minify --define:process.env.NODE_ENV='\"production\"' --env='BUN_PUBLIC_*'",
     "start": "cross-env NODE_ENV=production bun src/index.tsx",
     "electron": "concurrently \"npm:dev\" \"electron .\"",
     "dist": "electron-builder"
   },
   "dependencies": {
     "react": "^19",
-    "react-dom": "^19"
+    "react-dom": "^19",
+    "react-icons": "^5.6.0",
+    "electron-is-dev": "^3.0.1"
   },
   "devDependencies": {
     "@types/bun": "latest",
@@ -33,7 +46,6 @@
     "concurrently": "^9.2.1",
     "cross-env": "^10.1.0",
     "electron": "^40.8.0",
-    "electron-builder": "^26.8.1",
-    "electron-is-dev": "^3.0.1"
+    "electron-builder": "^26.8.1"
   }
 }
