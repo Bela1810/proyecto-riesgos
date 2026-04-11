@@ -347,8 +347,9 @@ class PEApp:
             # 3. Ordenar y Fusionar
             self.log("Fusionando históricos...")
             meses_ordenados = sorted(
-                dataframes.keys(), key=lambda x: mes_ano_to_date(x, self.log)
-            )
+                dataframes.keys(),
+                key=lambda x: mes_ano_to_date(x, self.log),  # type: ignore
+            )  # type: ignore
 
             if not meses_ordenados:
                 self.log("Error ordenando meses.", "error")
@@ -377,7 +378,7 @@ class PEApp:
             #     columns={"clasegarantia": f"clasegarantia{suffix}"}
             # )  # Asegurar renombrado si no cae en lambda
 
-            # Ajuste manual para el renombrado inicial correcto basado en lógica original
+            # Ajuste manual para el renombrado inicial correcto basado en lógica original  # noqa: E501
             cols_rename = {
                 "Morosidad": f"Morosidad_{meses_ordenados[0]}",
                 "CodigoContable": f"CodigoContable_{meses_ordenados[0]}",
@@ -459,8 +460,8 @@ class PEApp:
             try:
                 ultimo_dia_mes = mes_ano_to_date(
                     last_month, self.log
-                ) + pd.offsets.MonthEnd(0)
-            except:
+                ) + pd.offsets.MonthEnd(0)  # type: ignore
+            except:  # noqa: E722
                 ultimo_dia_mes = datetime.now()
 
             df_asociados = pd.read_excel(ruta_asociados, header=3)
@@ -576,7 +577,7 @@ class PEApp:
                     {0: "A", 1: "B", 2: "C", 3: "D", 4: "E"}
                 )
 
-                # Lógica de homologación (simplificada para legibilidad, igual a original)
+                # Lógica de homologación (simplificada para legibilidad, igual a original)  # noqa: E501
                 condiciones = [
                     (df_con["Calif.modelo"] == "A"),
                     (df_con["Calif.modelo"] == "B") & (df_con["MORA12"] <= 30),
