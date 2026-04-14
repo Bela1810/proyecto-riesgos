@@ -41,7 +41,7 @@ def calcular_pdi(row):
     clase = row["clasegarantia"]
     morosidad = row["Morosidad"]
 
-    if clase in [1, 4]:
+    if clase in [1, 4, 6]:
         if morosidad >= 420:
             return 1.0
         elif morosidad >= 210:
@@ -374,9 +374,10 @@ class PEApp:
                     else x
                 )
             )
-            # df_mora = df_mora.rename(
-            #     columns={"clasegarantia": f"clasegarantia{suffix}"}
-            # )  # Asegurar renombrado si no cae en lambda
+
+            df_mora = df_mora.rename(
+                columns={"clasegarantia": f"clasegarantia{suffix}"}
+            )  # Asegurar renombrado si no cae en lambda
 
             # Ajuste manual para el renombrado inicial correcto basado en lógica original  # noqa: E501
             cols_rename = {
