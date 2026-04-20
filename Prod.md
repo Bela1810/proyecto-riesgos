@@ -1,6 +1,6 @@
 # Instrucciones para construir ejecutable
 
-Estas instrucciones están dirigidas a las personas que vayan a modificar y a ejecutar el proyecto en local.
+Estas instrucciones están dirigidas a las personas que vayan a distribuir y a construir el programa.
 
 ---
 
