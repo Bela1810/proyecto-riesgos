@@ -1,14 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
- 
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap");
+
 .cola-card {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #ffffff;
   border: 1px solid #ffffff;
   border-radius: 12px;
   padding: 24px;
-  max-width: 560px;
 }
- 
+
 .cola-label {
   font-size: 11px;
   font-weight: 600;
@@ -17,9 +19,9 @@
   color: #999;
   margin-bottom: 8px;
 }
- 
+
 .cola-number {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 52px;
   font-weight: 600;
   color: #e01b24;
@@ -27,9 +29,8 @@
   margin-bottom: 20px;
 }
 
- 
 .prog-filename {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 11px;
   color: #888;
   overflow: hidden;
@@ -37,15 +38,15 @@
   white-space: nowrap;
   max-width: 75%;
 }
- 
+
 .prog-pct {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 12px;
   font-weight: 600;
   color: #e05a2b;
   flex-shrink: 0;
 }
- 
+
 .prog-track {
   height: 6px;
   background: #f0f0f0;
@@ -53,18 +54,39 @@
   overflow: hidden;
   margin-bottom: 8px;
 }
- 
+
 .prog-fill {
   height: 100%;
   border-radius: 99px;
   background: linear-gradient(90deg, #e05a2b, #f09560);
   transition: width 0.4s ease;
 }
- 
+
 .prog-meta {
   display: flex;
   justify-content: space-between;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 11px;
   color: #bbb;
+}
+
+.nothing-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 30px;
+  color: #bbb;
+  text-align: center;
+}
+
+.success-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 30px;
+  color: #4caf50;
+  text-align: center;
+}
+
+.error-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 30px;
+  color: #e01b24;
+  text-align: center;
 }
