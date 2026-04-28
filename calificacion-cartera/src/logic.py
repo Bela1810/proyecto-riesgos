@@ -27,19 +27,30 @@ def mes_ano_to_date(mes_ano, log_func):
 def calcular_pdi(row):
     clase = row["clasegarantia"]
     morosidad = row["Morosidad"]
-    if clase in [1, 4]:
-        if morosidad >= 420: return 1.0
-        elif morosidad >= 210: return 0.7
-        elif morosidad >= 90: return 0.6
-        else: return 0.45
+
+    if clase in [1, 4, 6]:
+        if morosidad >= 420:
+            return 1.0
+        elif morosidad >= 210:
+            return 0.7
+        elif morosidad >= 90:
+            return 0.6
+        else:
+            return 0.45
     elif clase == 2:
-        if morosidad >= 720: return 1.0
-        elif morosidad >= 360: return 0.7
-        else: return 0.4
+        if morosidad >= 720:
+            return 1.0
+        elif morosidad >= 360:
+            return 0.7
+        else:
+            return 0.4
     elif clase == 3:
-        if morosidad >= 540: return 1.0
-        elif morosidad >= 270: return 0.7
-        else: return 0.5
+        if morosidad >= 540:
+            return 1.0
+        elif morosidad >= 270:
+            return 0.7
+        else:
+            return 0.5
     else:
         return np.nan
 
