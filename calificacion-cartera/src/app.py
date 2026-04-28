@@ -14,13 +14,12 @@ Esta aplicación permite estimar la Pérdida Esperada (PE) procesando los archiv
 y aplicando los modelos de Machine Learning entrenados.
 """)
 
-# --- Entradas de Usuario ---
-# --- Entradas de Usuario (Configuración) ---
 import tkinter as tk
 from tkinter import filedialog
 
-# Inicializar variables en session_state si no existen
+
 default_paths = {
+    
     "carpeta_base": r"C:\Users\jhquiza\OneDrive - Universidad de Medellin\2025-2\Proyecto riesgos\Archivos septiembre 2025",
     "carpeta_salida": r"C:\Users\jhquiza\OneDrive - Universidad de Medellin\2025-2\Proyecto riesgos\Archivos septiembre 2025",
 }

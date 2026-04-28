@@ -1,0 +1,78 @@
+:root {
+  --red:          #e01b24;
+  --red-hover:    #c0161d;
+  --red-light:    rgba(224, 27, 36, 0.12);
+  --black:        #111111;
+  --surface:      #ffffff;
+  --surface-2:    #f4f5f7;
+  --border:       #e2e4e8;
+  --text-primary: #1a1d23;
+  --text-muted:   #6b7280;
+  --console-bg:   #0d1117;
+  --console-text: #e2e8f0;
+  --radius-sm:    6px;
+  --radius-md:    10px;
+  --radius-lg:    14px;
+  --shadow-card:  0 1px 3px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.06);
+  --font-ui:      "Comme", sans-serif, 'Segoe UI', system-ui, sans-serif;
+  --font-mono:    'Comme', 'Cascadia Code', 'Fira Code', monospace;
+}
+
+body {
+  font-family: "Comme", sans-serif;
+  background: var(--surface-2);
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-left: 80px;
+}
+
+.page-header_title .title {
+  font-size: 35px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 7px;
+  margin-top: 40px;
+}
+
+.page-header_title .subtitle {
+  font-size: 19px;
+  margin-top: 1px;
+  color: var(--text-muted);
+  max-width: 800px;
+}
+
+.badge-last-run {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 30px;
+  margin: 40px;
+  font-weight: bold;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding-left: 80px;
+  flex: 1;
+}
+
+
+
+
+
+
