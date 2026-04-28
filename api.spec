@@ -1,7 +1,7 @@
 # -*- mode: python ; coding: utf-8 -*-
 from PyInstaller.utils.hooks import collect_all
 
-datas = [('.\\calificacion-cartera\\src\\logic.py', '.'), ('.\\calificacion-cartera\\models\\decision_tree_con_libranza.joblib', '.'), ('.\\calificacion-cartera\\models\\decision_tree_sin_libranza.joblib', '.'), ('.\\calificacion-cartera\\models\\lightgbm_con_libranza.joblib', '.'), ('.\\calificacion-cartera\\models\\lightgbm_sin_libranza.joblib', '.')]
+datas = [('.\\calificacion-cartera\\src\\logic.py', '.'), ('.\\calificacion-cartera\\models\\lightgbm_con_libranza.joblib', '.'), ('.\\calificacion-cartera\\models\\lightgbm_sin_libranza.joblib', '.')]
 binaries = []
 hiddenimports = ['flask', 'flask_cors', 'joblib', 'numpy', 'pandas', 'python-calamine', 'sklearn', 'openpyxl']
 tmp_ret = collect_all('flask')

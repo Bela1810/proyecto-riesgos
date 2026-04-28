@@ -41,8 +41,6 @@ pyinstaller --onefile `
   --hidden-import sklearn `
   --hidden-import openpyxl `
   --add-data ".\calificacion-cartera\src\logic.py;." `
-  --add-data ".\calificacion-cartera\models\decision_tree_con_libranza.joblib;." `
-  --add-data ".\calificacion-cartera\models\decision_tree_sin_libranza.joblib;." `
   --add-data ".\calificacion-cartera\models\lightgbm_con_libranza.joblib;." `
   --add-data ".\calificacion-cartera\models\lightgbm_sin_libranza.joblib;." `
   .\calificacion-cartera\src\api.py
