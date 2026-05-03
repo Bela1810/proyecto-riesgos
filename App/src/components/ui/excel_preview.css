@@ -1,0 +1,129 @@
+.card.excel-preview-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-right: 70px;
+  align-self: flex-start;
+  min-height: 320px;
+  max-height: min(520px, 70vh);
+}
+
+.excel-preview-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.excel-preview-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 8px 12px 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.excel-preview-tab {
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  cursor: pointer;
+  border-radius: 6px 6px 0 0;
+}
+
+.excel-preview-tab:hover {
+  color: var(--text-primary);
+  background: rgba(224, 27, 36, 0.06);
+}
+
+.excel-preview-tab--active {
+  color: var(--red);
+  border-bottom-color: var(--red);
+  background: var(--surface);
+}
+
+.excel-preview-scroll {
+  overflow: auto;
+  flex: 1;
+  min-height: 200px;
+  max-height: 400px;
+  background: var(--surface);
+}
+
+.excel-preview-table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.excel-preview-table th,
+.excel-preview-table td {
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  text-align: left;
+  white-space: nowrap;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.excel-preview-table th {
+  background: var(--surface-2);
+  font-weight: 600;
+  color: var(--text-primary);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.excel-preview-table tr:nth-child(even) td {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.excel-preview-hint {
+  padding: 6px 16px 10px;
+  font-size: 11px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.excel-preview-state {
+  padding: 32px 24px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.excel-preview-state--error {
+  color: #b91c1c;
+}
+
+.excel-preview-spinner {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--border);
+  border-top-color: var(--red);
+  border-radius: 50%;
+  animation: excel-spin 0.7s linear infinite;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+@keyframes excel-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

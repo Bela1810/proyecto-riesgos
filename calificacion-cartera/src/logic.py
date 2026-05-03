@@ -245,24 +245,25 @@ def run_estimation_process(carpeta_base, carpeta_salida, log_func):
 
         log_func("Guardando resultados...", "process")
 
-        carpeta_salida_final = os.path.join(os.path.expanduser('~'), 'Documents')
-        log_func(f"Intentando guardar en ruta fija para pruebas: {carpeta_salida_final}", "process")
+        os.makedirs(carpeta_salida, exist_ok=True)
+        log_func(f"Guardando en: {carpeta_salida}", "process")
+        ruta_con = os.path.join(carpeta_salida, "PE_con_libranza.xlsx")
+        ruta_sin = os.path.join(carpeta_salida, "PE_sin_libranza.xlsx")
 
-        os.makedirs(carpeta_salida_final, exist_ok=True)
-        ruta_con = os.path.join(carpeta_salida_final, "PE_con_libranza.xlsx")
-        ruta_sin = os.path.join(carpeta_salida_final, "PE_sin_libranza.xlsx")
-
+        out_files = {}
         if not df_con.empty:
-            log_func(f"Guardando ruta_con en: {ruta_con}", "process")
+            log_func(f"Guardando: {ruta_con}", "process")
             df_con.to_excel(ruta_con, index=False)
             log_func(f"Guardado: {ruta_con}", "success")
+            out_files["con_libranza"] = ruta_con
         if not df_sin.empty:
-            log_func(f"Guardando ruta_sin en: {ruta_sin}", "process")
+            log_func(f"Guardando: {ruta_sin}", "process")
             df_sin.to_excel(ruta_sin, index=False)
             log_func(f"Guardado: {ruta_sin}", "success")
+            out_files["sin_libranza"] = ruta_sin
 
         log_func("¡PROCESO FINALIZADO CON ÉXITO!", "success")
-        return {"status": "success", "message": "Proceso finalizado con éxito.", "files": {"con_libranza": ruta_con, "sin_libranza": ruta_sin}}
+        return {"status": "success", "message": "Proceso finalizado con éxito.", "files": out_files}
 
     except Exception as e:
         import traceback
