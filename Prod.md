@@ -20,7 +20,7 @@ uv sync
 
 ## Compilar la logica del back en un ejecutable
 
-Ejecuta este comando en la raiz del proyecto o en la carpeta "calificacion-cartera" modificando la ruta del comando removiendola del las direcciones a los archivos.
+Ejecuta este comando **en la raiz del proyecto** o en la carpeta "calificacion-cartera" modificando la ruta del comando removiendola del las direcciones a los archivos.
 
 ```bash
 pyinstaller --onefile `
