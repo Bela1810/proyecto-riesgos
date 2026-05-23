@@ -21,6 +21,59 @@ interface SheetPreview {
   rows: (string | number | boolean)[][];
 }
 
+export interface PeColumnStats {
+  promedio: number;
+  cuenta: number;
+  suma: number;
+}
+
+function parsePeValue(raw: unknown): number | null {
+  if (raw === null || raw === undefined || raw === "") return null;
+  if (typeof raw === "number" && Number.isFinite(raw)) return raw;
+  const normalized = String(raw).trim().replace(/\s/g, "").replace(",", ".");
+  const n = Number(normalized);
+  return Number.isFinite(n) ? n : null;
+}
+
+function computePeStatsFromPath(absPath: string): PeColumnStats | null {
+  const req = (window as any).require as ((id: string) => unknown) | undefined;
+  if (!req) return null;
+  const fs = req("fs") as typeof import("fs");
+  const XLSX = req("xlsx") as typeof import("xlsx");
+  if (!fs.existsSync(absPath)) return null;
+  const buf = fs.readFileSync(absPath);
+  const wb = XLSX.read(buf, { type: "buffer", cellDates: true });
+  const sheetName = wb.SheetNames[0];
+  if (!sheetName) return { promedio: 0, cuenta: 0, suma: 0 };
+  const sheet = wb.Sheets[sheetName];
+  const matrix = XLSX.utils.sheet_to_json(sheet, {
+    header: 1,
+    defval: "",
+  }) as unknown[][];
+  if (matrix.length <= 1) return { promedio: 0, cuenta: 0, suma: 0 };
+
+  const headers = (matrix[0] ?? []).map((h) => cellToString(h).trim());
+  const peIndex = headers.findIndex((h) => h.toUpperCase() === "PE");
+  if (peIndex < 0) return null;
+
+  const dataRows = matrix.slice(1);
+  const cuenta = dataRows.length;
+  let suma = 0;
+  for (const row of dataRows) {
+    const pe = parsePeValue((row as unknown[])[peIndex]);
+    if (pe !== null) suma += pe;
+  }
+  const promedio = cuenta > 0 ? suma / cuenta : 0;
+  return { promedio, cuenta, suma };
+}
+
+function formatStatNumber(value: number): string {
+  return value.toLocaleString("es-CO", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+}
+
 function cellToString(v: unknown): string {
   if (v === null || v === undefined) return "";
   if (typeof v === "boolean") return v ? "TRUE" : "FALSE";
@@ -58,6 +111,10 @@ export default function ExcelPreview({
 }: ExcelPreviewProps) {
   const [activeTab, setActiveTab] = useState<TabKey>("con");
   const [preview, setPreview] = useState<SheetPreview | null>(null);
+  const [peStats, setPeStats] = useState<{
+    con?: PeColumnStats;
+    sin?: PeColumnStats;
+  }>({});
   const [loadError, setLoadError] = useState<string | null>(null);
 
   const hasCon = Boolean(outputFiles?.con_libranza);
@@ -67,6 +124,27 @@ export default function ExcelPreview({
     if (!hasCon && hasSin) setActiveTab("sin");
     if (hasCon && !hasSin) setActiveTab("con");
   }, [hasCon, hasSin]);
+
+  useEffect(() => {
+    setPeStats({});
+    if (isProcessing || !outputFiles) return;
+
+    try {
+      const req = (window as any).require;
+      if (!req) return;
+
+      const next: { con?: PeColumnStats; sin?: PeColumnStats } = {};
+      if (outputFiles.con_libranza) {
+        next.con = computePeStatsFromPath(outputFiles.con_libranza) ?? undefined;
+      }
+      if (outputFiles.sin_libranza) {
+        next.sin = computePeStatsFromPath(outputFiles.sin_libranza) ?? undefined;
+      }
+      setPeStats(next);
+    } catch {
+      setPeStats({});
+    }
+  }, [outputFiles, isProcessing]);
 
   useEffect(() => {
     setLoadError(null);
@@ -216,6 +294,49 @@ export default function ExcelPreview({
                 Vista previa: máximo {MAX_ROWS} filas. El archivo completo está
                 en la carpeta de salida.
               </p>
+            )}
+
+            {(peStats.con || peStats.sin) && (
+              <div className="excel-preview-stats" aria-label="Estadísticos columna PE">
+                {hasCon && peStats.con && (
+                  <div className="excel-preview-stats-block">
+                    <h3 className="excel-preview-stats-title">PE con libranza</h3>
+                    <dl className="excel-preview-stats-grid">
+                      <div className="excel-preview-stat">
+                        <dt>Promedio</dt>
+                        <dd>{formatStatNumber(peStats.con.promedio)}</dd>
+                      </div>
+                      <div className="excel-preview-stat">
+                        <dt>Cuenta</dt>
+                        <dd>{peStats.con.cuenta.toLocaleString("es-CO")}</dd>
+                      </div>
+                      <div className="excel-preview-stat">
+                        <dt>Suma</dt>
+                        <dd>{formatStatNumber(peStats.con.suma)}</dd>
+                      </div>
+                    </dl>
+                  </div>
+                )}
+                {hasSin && peStats.sin && (
+                  <div className="excel-preview-stats-block">
+                    <h3 className="excel-preview-stats-title">PE sin libranza</h3>
+                    <dl className="excel-preview-stats-grid">
+                      <div className="excel-preview-stat">
+                        <dt>Promedio</dt>
+                        <dd>{formatStatNumber(peStats.sin.promedio)}</dd>
+                      </div>
+                      <div className="excel-preview-stat">
+                        <dt>Cuenta</dt>
+                        <dd>{peStats.sin.cuenta.toLocaleString("es-CO")}</dd>
+                      </div>
+                      <div className="excel-preview-stat">
+                        <dt>Suma</dt>
+                        <dd>{formatStatNumber(peStats.sin.suma)}</dd>
+                      </div>
+                    </dl>
+                  </div>
+                )}
+              </div>
             )}
           </>
         )}
