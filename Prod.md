@@ -23,23 +23,29 @@ uv sync
 Ejecuta este comando **en la raiz del proyecto** o en la carpeta "calificacion-cartera" modificando la ruta del comando removiendola del las direcciones a los archivos.
 
 ```bash
-pyinstaller --onefile `
+pyinstaller --onefile --clean --noconfirm `
   --collect-all flask `
   --collect-all flask_cors `
   --collect-all joblib `
   --collect-all numpy `
   --collect-all pandas `
-  --collect-all python-calamine `
+  --collect-all scipy `
   --collect-all sklearn `
+  --collect-all threadpoolctl `
+  --collect-all lightgbm `
   --collect-all openpyxl `
+  --collect-all python_calamine `
   --hidden-import flask `
   --hidden-import flask_cors `
   --hidden-import joblib `
   --hidden-import numpy `
   --hidden-import pandas `
-  --hidden-import python-calamine `
+  --hidden-import scipy `
   --hidden-import sklearn `
+  --hidden-import threadpoolctl `
+  --hidden-import lightgbm `
   --hidden-import openpyxl `
+  --hidden-import python_calamine `
   --add-data ".\calificacion-cartera\src\logic.py;." `
   --add-data ".\calificacion-cartera\models\lightgbm_con_libranza.joblib;." `
   --add-data ".\calificacion-cartera\models\lightgbm_sin_libranza.joblib;." `

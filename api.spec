@@ -3,7 +3,7 @@ from PyInstaller.utils.hooks import collect_all
 
 datas = [('.\\calificacion-cartera\\src\\logic.py', '.'), ('.\\calificacion-cartera\\models\\lightgbm_con_libranza.joblib', '.'), ('.\\calificacion-cartera\\models\\lightgbm_sin_libranza.joblib', '.')]
 binaries = []
-hiddenimports = ['flask', 'flask_cors', 'joblib', 'numpy', 'pandas', 'python-calamine', 'sklearn', 'openpyxl']
+hiddenimports = ['flask', 'flask_cors', 'joblib', 'numpy', 'pandas', 'scipy', 'sklearn', 'threadpoolctl', 'lightgbm', 'openpyxl', 'python_calamine']
 tmp_ret = collect_all('flask')
 datas += tmp_ret[0]; binaries += tmp_ret[1]; hiddenimports += tmp_ret[2]
 tmp_ret = collect_all('flask_cors')
@@ -14,11 +14,17 @@ tmp_ret = collect_all('numpy')
 datas += tmp_ret[0]; binaries += tmp_ret[1]; hiddenimports += tmp_ret[2]
 tmp_ret = collect_all('pandas')
 datas += tmp_ret[0]; binaries += tmp_ret[1]; hiddenimports += tmp_ret[2]
-tmp_ret = collect_all('python-calamine')
+tmp_ret = collect_all('scipy')
 datas += tmp_ret[0]; binaries += tmp_ret[1]; hiddenimports += tmp_ret[2]
 tmp_ret = collect_all('sklearn')
 datas += tmp_ret[0]; binaries += tmp_ret[1]; hiddenimports += tmp_ret[2]
+tmp_ret = collect_all('threadpoolctl')
+datas += tmp_ret[0]; binaries += tmp_ret[1]; hiddenimports += tmp_ret[2]
+tmp_ret = collect_all('lightgbm')
+datas += tmp_ret[0]; binaries += tmp_ret[1]; hiddenimports += tmp_ret[2]
 tmp_ret = collect_all('openpyxl')
+datas += tmp_ret[0]; binaries += tmp_ret[1]; hiddenimports += tmp_ret[2]
+tmp_ret = collect_all('python_calamine')
 datas += tmp_ret[0]; binaries += tmp_ret[1]; hiddenimports += tmp_ret[2]
 
 
